@@ -3,236 +3,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>星爵台球俱乐部</title>
+<title>星爵台球俱乐部 | 在线预订</title>
 <style>
-/* 原有样式补充以下内容 */
-.quantity-controls {display:flex;align-items:center;gap:8px;}
+/* 基础样式优化 */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+header {
+  text-align: center;
+  padding: 40px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+  color: white;
+  margin-bottom: 30px;
+  border-radius: 8px;
+}
+
+.section {
+  margin: 30px 0;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #e74c3c;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+/* 价格模块优化 */
+.price-subsection {
+  margin: 25px 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.price-subsection h3 {
+  color: #e74c3c;
+  font-size: 1.2em;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #eee;
+}
+
+/* 订单系统样式优化 */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .quantity-btn {
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background-color:#e74c3c;
-  color:white;
-  border:none;
-  cursor:pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
 }
+
+.quantity-btn:hover {
+  background: #c0392b;
+}
+
 .quantity-input {
-  width:40px;
-  text-align:center;
-  padding:5px;
+  width: 60px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
+
 .add-to-order {
-  background-color:#2ecc71;
-  padding:6px 12px;
-  border-radius:4px;
-  color:white;
-  border:none;
-  cursor:pointer;
+  background: #2ecc71;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
 }
+
+.add-to-order:hover {
+  background: #27ae60;
+}
+
+/* 订单侧边栏优化 */
 #order-summary {
-  position:fixed;
-  top:120px;
-  right:20px;
-  width:300px;
-  background:white;
-  padding:20px;
-  border-radius:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  width: 320px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.order-item {display:flex;justify-content:space-between;margin-bottom:8px;}
-#total-price {font-weight:bold;color:#e74c3c;margin-top:15px;}
-.remove-item {color:#999;cursor:pointer;margin-left:10px;}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.remove-item {
+  color: #999;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+.remove-item:hover {
+  color: #e74c3c;
+}
+
+#total-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #eee;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  #order-summary {
+    position: static;
+    width: 100%;
+    margin-top: 30px;
+  }
+}
 </style>
 </head>
 <body>
-<!-- 头部和原有内容保持不变 -->
+
+<header>
+  <h1>星爵台球俱乐部</h1>
+  <p>专业台球体验 · 智能在线预订</p>
+</header>
+
+<!-- 原有内容保持不变 -->
 
 <div class="section">
   <h2>价格体系</h2>
+
   <div class="price-subsection">
-    <h3>麻将房价格</h3>
+    <h3>🀄 麻将房</h3>
     <table class="compact-table">
-      <tr><th>房型</th><th>房间号</th><th>价格详情</th><th>操作</th></tr>
-      <tr data-type="mahjong" data-category="特价房" data-price="88" data-extra="30">
+      <tr><th>房型</th><th>房间号</th><th>价格详情</th><th style="width:200px">操作</th></tr>
+
+      <tr data-type="mahjong" data-category="特价房" data-base-price="88" data-base-hours="4" data-extra-rate="30">
         <td>特价房</td>
         <td>A06/A08/A10/A12/A13</td>
-        <td><strong>88元/4小时</strong> 起，超时30元/小时</td>
+        <td><strong class="price">88</strong>元/4小时起，超时<strong>30</strong>元/小时</td>
         <td>
           <div class="quantity-controls">
             <button class="quantity-btn minus">-</button>
-            <input type="number" class="quantity-input" value="1" min="1">
+            <input type="number" class="quantity-input" value="4" min="4" step="1">
             <button class="quantity-btn plus">+</button>
-          </div>
-          <button class="add-to-order">加入订单</button>
-        </td>
-      </tr>
-      <!-- 其他麻将房行结构相同 -->
-    </table>
-  </div>
-
-  <div class="price-subsection">
-    <h3>台球价格</h3>
-    <table class="compact-table">
-      <tr><th>区域</th><th>球台</th><th>价格</th><th>操作</th></tr>
-      <tr data-type="pool" data-category="AB区" data-price="39">
-        <td>AB区/CD区</td>
-        <td>10-19/111-666</td>
-        <td><strong>39元/小时</strong></td>
-        <td>
-          <div class="quantity-controls">
-            <input type="number" class="quantity-input hours" value="1" min="1" step="0.5">
             <span>小时</span>
           </div>
           <button class="add-to-order">加入订单</button>
         </td>
       </tr>
-      <!-- 其他台球行结构相同 -->
+      <!-- 其他麻将房行 -->
+    </table>
+  </div>
+
+  <div class="price-subsection">
+    <h3>🎱 台球区</h3>
+    <table class="compact-table">
+      <tr><th>区域</th><th>球台</th><th>价格</th><th style="width:200px">操作</th></tr>
+
+      <tr data-type="pool" data-category="AB区" data-price="39">
+        <td>AB区/CD区</td>
+        <td>10-19/111-666</td>
+        <td><strong class="price">39</strong>元/小时</td>
+        <td>
+          <div class="quantity-controls">
+            <input type="number" class="quantity-input" value="1" min="0.5" step="0.5">
+            <span>小时</span>
+          </div>
+          <button class="add-to-order">加入订单</button>
+        </td>
+      </tr>
+      <!-- 其他台球行 -->
     </table>
   </div>
 </div>
 
 <div id="order-summary">
-  <h3>当前订单</h3>
+  <h3>📝 当前订单</h3>
   <div id="order-items"></div>
-  <div id="total-price">总计：¥0</div>
-  <button style="margin-top:15px;width:100%" onclick="submitOrder()">提交预约</button>
+  <div id="total-price">总计：¥0.00</div>
+  <button onclick="submitOrder()" style="margin-top:20px; width:100%; padding:12px; background:#e74c3c; color:white; border:none; border-radius:6px; cursor:pointer;">
+    提交订单 (¥<span id="total-display">0.00</span>)
+  </button>
 </div>
 
 <script>
-let orderItems = [];
+// 订单管理模块
+const orderManager = (() => {
+  let items = JSON.parse(localStorage.getItem('orderItems')) || [];
 
-document.querySelectorAll('.add-to-order').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const row = this.closest('tr');
+  return {
+    addItem: (newItem) => {
+      const existing = items.find(item =>
+        item.type === newItem.type &&
+        item.category === newItem.category
+      );
+
+      if(existing) {
+        existing.quantity += newItem.quantity;
+        existing.price += newItem.price;
+      } else {
+        items.push(newItem);
+      }
+      localStorage.setItem('orderItems', JSON.stringify(items));
+    },
+
+    removeItem: (index) => {
+      items.splice(index, 1);
+      localStorage.setItem('orderItems', JSON.stringify(items));
+    },
+
+    getItems: () => items,
+
+    clear: () => {
+      items = [];
+      localStorage.removeItem('orderItems');
+    }
+  };
+})();
+
+// 界面更新模块
+const updateUI = {
+  orderSummary: () => {
+    const container = document.getElementById('order-items');
+    const items = orderManager.getItems();
+    let html = '';
+    let total = 0;
+
+    items.forEach((item, index) => {
+      html += `
+        <div class="order-item">
+          <div>
+            <strong>${item.category}</strong>
+            <small>${item.type}</small>
+          </div>
+          <div>
+            <span>¥${item.price.toFixed(2)}</span>
+            <span class="remove-item" onclick="orderManager.removeItem(${index}); updateUI.orderSummary()">×</span>
+          </div>
+        </div>
+      `;
+      total += item.price;
+    });
+
+    container.innerHTML = html || '<p class="empty">暂无商品</p>';
+    document.getElementById('total-price').textContent = `总计：¥${total.toFixed(2)}`;
+    document.getElementById('total-display').textContent = total.toFixed(2);
+  }
+};
+
+// 事件处理
+document.addEventListener('click', e => {
+  if(e.target.classList.contains('add-to-order')) {
+    const row = e.target.closest('tr');
     const type = row.dataset.type;
     const category = row.dataset.category;
-    const price = parseFloat(row.dataset.price);
-    let quantity = parseFloat(row.querySelector('.quantity-input').value);
+    const quantity = parseFloat(row.querySelector('.quantity-input').value);
 
+    let price = 0;
     if(type === 'mahjong') {
-      const extraRate = parseFloat(row.dataset.extra);
-      const baseHours = 4;
-      if(quantity > baseHours) {
-        const extra = quantity - baseHours;
-        price = price + (extra * extraRate);
-      }
+      const basePrice = parseFloat(row.dataset.basePrice);
+      const baseHours = parseFloat(row.dataset.baseHours);
+      const extraRate = parseFloat(row.dataset.extraRate);
+      const extra = Math.max(quantity - baseHours, 0);
+      price = basePrice + (extra * extraRate);
+    } else {
+      const unitPrice = parseFloat(row.querySelector('.price').textContent);
+      price = unitPrice * quantity;
     }
 
-    const item = {
+    orderManager.addItem({
       type,
       category,
-      price: price * quantity,
-      quantity
-    };
-
-    orderItems.push(item);
-    updateOrderSummary();
-  });
+      quantity,
+      price
+    });
+    updateUI.orderSummary();
+  }
 });
 
-function updateOrderSummary() {
-  const container = document.getElementById('order-items');
-  let html = '';
-  let total = 0;
-
-  orderItems.forEach((item, index) => {
-    html += `
-      <div class="order-item">
-        <span>${item.category} ×${item.quantity}</span>
-        <span>¥${item.price.toFixed(2)}
-          <span class="remove-item" onclick="removeItem(${index})">×</span>
-        </span>
-      </div>
-    `;
-    total += item.price;
-  });
-
-  container.innerHTML = html;
-  document.getElementById('total-price').textContent = `总计：¥${total.toFixed(2)}`;
-}
-
-function removeItem(index) {
-  orderItems.splice(index, 1);
-  updateOrderSummary();
-}
-
-function submitOrder() {
+// 表单提交
+window.submitOrder = () => {
   const formData = {
     name: document.querySelector('input[type="text"]').value,
     phone: document.querySelector('input[type="tel"]').value,
     date: document.querySelector('input[type="date"]').value,
     time: document.querySelector('select').value,
-    order: orderItems
+    items: orderManager.getItems()
   };
 
-  // 此处可添加表单验证逻辑
-  console.log('提交订单:', formData);
-  alert('预约已提交，我们会尽快联系您确认订单详情！');
-  orderItems = [];
-  updateOrderSummary();
-}
+  if(!formData.name || !formData.phone || !formData.date || !formData.time) {
+    alert('请填写完整的预约信息！');
+    return;
+  }
+
+  if(formData.items.length === 0) {
+    alert('请选择至少一项服务！');
+    return;
+  }
+
+  // 这里可以添加实际提交逻辑
+  console.log('订单提交数据:', formData);
+  alert('订单提交成功！稍后将有专人联系您确认。');
+  orderManager.clear();
+  updateUI.orderSummary();
+};
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+  updateUI.orderSummary();
+});
 </script>
-</body>
-</html><div class="section">
-<h2>设施与服务</h2>
-<ul>
-<li>美式/英式球桌选择</li>
-<li>VIP私密包厢（配备休息区）</li>
-<li>专业球杆租赁服务</li>
-<li>全天候饮品供应</li>
-<li>赛事直播专区</li>
-</ul>
-</div>
-
-<div class="section">
-  <h2>价格体系</h2>
-  <div class="price-subsection">
-    <h3>麻将房价格</h3>
-    <table class="compact-table">
-      <tr><th style="width:25%">房型</th><th style="width:35%">房间号</th><th style="width:40%">价格详情</th></tr>
-      <tr><td>特价房</td><td>A06/A08/A10/A12/A13</td><td><strong>88元/4小时</strong> 起，超时30元/小时</td></tr>
-      <tr><td>中房</td><td>A01/A02/A03/A05/A09/A11</td><td><strong>150元/4小时</strong> 起，超时38元/小时</td></tr>
-      <tr><td>豪包</td><td>A666/A888/A999</td><td><strong>88元/小时</strong></td></tr>
-    </table>
-    <p style="color:#666;margin-top:10px;font-size:0.9em">* 所有麻将房需20元茶水底消（非强制）</p>
-  </div>
-
-  <div class="price-subsection">
-    <h3>台球价格</h3>
-    <table class="compact-table">
-      <tr><th style="width:20%">区域</th><th style="width:25%">球台编号</th><th style="width:20%">价格</th><th style="width:35%">备注</th></tr>
-      <tr><td>AB区/CD区</td><td>10-19/111-666</td><td><strong>39元/小时</strong></td><td>AB区含摆球服务</td></tr>
-      <tr><td>普通包厢</td><td>1-9</td><td><strong>69元/小时</strong></td><td>-</td></tr>
-      <tr><td>VIP</td><td>T10</td><td><strong>59元/小时</strong></td><td>斯诺克专用</td></tr>
-      <tr><td>豪包</td><td>888</td><td><strong>128元/小时</strong></td><td>含初级助教服务</td></tr>
-    </table>
-    <div style="margin-top:12px">
-      <p style="color:#666;margin-bottom:8px;font-size:0.9em">助教服务：</p>
-      <ul style="color:#666;font-size:0.9em">
-        <li>初级：<strong>78元/小时</strong></li>
-        <li>中级：<strong>88元/小时</strong></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-<h2>预约体验</h2>
-<form>
-<label>姓名:<input type="text" required></label>
-<label>联系电话:<input type="tel" required></label>
-<label>预约日期:<input type="date" required></label>
-<label>时段选择:
-<select required>
-<option value="">请选择时段</option>
-<option>10:00-14:00</option>
-<option>14:00-18:00</option>
-<option>18:00-22:00</option>
-</select>
-</label>
-<button type="submit">提交预约</button>
-</form>
-</div>
 
 </body>
 </html>
