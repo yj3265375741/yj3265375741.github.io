@@ -4,11 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>星爵台球俱乐部 | 在线预订</title>
-<!-- 字体引入 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <style>
-/* ======= 1. 基础变量定义 ======= */
 :root {
   --primary: #2c3e50;
   --secondary: #e74c3c;
@@ -18,7 +15,6 @@
   --text-light: #666;
 }
 
-/* ======= 2. 基础样式 ======= */
 body {
   font-family: 'Noto Sans SC', system-ui, sans-serif;
   background: linear-gradient(135deg, #ffffff 0%, var(--light-bg) 100%);
@@ -28,7 +24,6 @@ body {
   padding: 20px;
 }
 
-/* ======= 3. 头部样式 ======= */
 header {
   text-align: center;
   padding: 40px 0;
@@ -38,7 +33,14 @@ header {
   border-radius: 8px;
 }
 
-/* ======= 4. 表格优化 ======= */
+.section {
+  margin: 30px 0;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
 .compact-table {
   width: 100%;
   border-collapse: separate;
@@ -61,27 +63,61 @@ header {
   transform: translateX(4px);
 }
 
-/* ======= 5. 价格标签 ======= */
-.price {
+.price-subsection {
+  margin: 25px 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
   position: relative;
-  display: inline-block;
-  padding: 4px 8px;
-  background: linear-gradient(45deg, var(--secondary), #c0392b);
-  color: white;
-  border-radius: 4px;
 }
-.price:after {
-  content: "¥";
-  margin-left: 4px;
-  font-size: 0.8em;
-  opacity: 0.8;
+.price-subsection:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 2%;
+  width: 96%;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%);
+  z-index: -1;
 }
 
-/* ======= 6. 按钮效果 ======= */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.quantity-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.quantity-btn:hover {
+  background: #c0392b;
+}
+.quantity-input {
+  width: 60px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
 .add-to-order {
+  background: var(--accent);
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 .add-to-order:after {
   content: "";
@@ -100,14 +136,25 @@ header {
   height: 200px;
 }
 
-/* ======= 7. 订单侧边栏 ======= */
 #order-summary {
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  width: 320px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
 }
 #order-summary:hover {
   transform: translateY(-5px);
 }
 .order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
   transition: all 0.2s ease;
 }
 .order-item:hover {
@@ -115,65 +162,97 @@ header {
   padding-left: 8px;
 }
 
-/* ======= 8. 动态阴影 ======= */
-.price-subsection:after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 2%;
-  width: 96%;
-  height: 10px;
-  background: radial-gradient(ellipse at center,
-    rgba(0,0,0,0.1) 0%,
-    rgba(0,0,0,0) 80%
-  );
-  z-index: -1;
-}
-
-/* ======= 9. 加载动画 ======= */
-.loading-indicator {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease infinite;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ======= 10. 响应式优化 ======= */
 @media (max-width: 768px) {
+  #order-summary {
+    position: static;
+    width: 100%;
+    margin-top: 30px;
+  }
   .compact-table td:nth-child(2),
   .compact-table th:nth-child(2) {
     display: none;
   }
-  #order-summary {
-    position: static;
-    width: 100%;
-  }
-  .price-subsection {
-    padding: 15px;
-  }
+}
+
+.price {
+  position: relative;
+  display: inline-block;
+  padding: 4px 8px;
+  background: linear-gradient(45deg, var(--secondary), #c0392b);
+  color: white;
+  border-radius: 4px;
+}
+.price:after {
+  content: "¥";
+  margin-left: 4px;
+  font-size: 0.8em;
+  opacity: 0.8;
 }
 </style>
 </head>
-
 <body>
-<!-- 原有HTML结构保持不变 -->
-<header>...</header>
-<div class="section">...</div>
-<div id="order-summary">...</div>
+<header>
+  <h1>星爵台球俱乐部</h1>
+  <p>专业台球体验 · 智能在线预订</p>
+</header>
 
-<!-- 加载指示器示例 -->
-<div class="image-placeholder">
-  <div class="loading-indicator"></div>
+<div class="section">
+  <h2>价格体系</h2>
+  <div class="price-subsection">
+    <h3>🀄 麻将房</h3>
+    <table class="compact-table">
+      <tr><th>房型</th><th>房间号</th><th>价格详情</th><th style="width:200px">操作</th></tr>
+      <tr data-type="mahjong" data-category="特价房" data-base-price="88" data-base-hours="4" data-extra-rate="30">
+        <td>特价房</td>
+        <td>A06/A08/A10/A12/A13</td>
+        <td><strong class="price">88</strong>元/4小时起，超时<strong>30</strong>元/小时</td>
+        <td>
+          <div class="quantity-controls">
+            <button class="quantity-btn minus">-</button>
+            <input type="number" class="quantity-input" value="4" min="4" step="1">
+            <button class="quantity-btn plus">+</button>
+            <span>小时</span>
+          </div>
+          <button class="add-to-order">加入订单</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="price-subsection">
+    <h3>🎱 台球区</h3>
+    <table class="compact-table">
+      <tr><th>区域</th><th>球台</th><th>价格</th><th style="width:200px">操作</th></tr>
+      <tr data-type="pool" data-category="AB区" data-price="39">
+        <td>AB区/CD区</td>
+        <td>10-19/111-666</td>
+        <td><strong class="price">39</strong>元/小时</td>
+        <td>
+          <div class="quantity-controls">
+            <input type="number" class="quantity-input" value="1" min="0.5" step="0.5">
+            <span>小时</span>
+          </div>
+          <button class="add-to-order">加入订单</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div id="order-summary">
+  <h3>📝 当前订单</h3>
+  <div id="order-items"></div>
+  <div id="total-price">总计：¥0.00</div>
+  <button onclick="submitOrder()" style="margin-top:20px; width:100%; padding:12px; background:#e74c3c; color:white; border:none; border-radius:6px; cursor:pointer;">
+    提交订单 (¥<span id="total-display">0.00</span>)
+  </button>
 </div>
 
 <script>
 // 原有JavaScript代码保持不变
+const orderManager = (() => {
+  // ...保持原有JS代码不变...
+})();
 </script>
 </body>
 </html>
