@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星爵台球俱乐部</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:1200px;margin:0 auto;padding:20px;background-color:#f5f5f5;}
+header{text-align:center;padding:30px 0;background-color:#1a1a1a;color:white;}
+.section{margin:30px 0;padding:20px;background-color:white;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+h2{color:#2c3e50;border-bottom:2px solid #e74c3c;padding-bottom:10px;}
+.price-subsection{margin:20px 0;padding:15px;background-color:#f8f9fa;border-radius:6px;}
+.price-subsection h3{color:#e74c3c;font-size:1.1em;margin:0 0 12px 0;padding-bottom:8px;border-bottom:1px solid #eee;}
+table{width:100%;border-collapse:collapse;margin:15px 0;}
+td,th{padding:12px;border:1px solid #ddd;text-align:left;}
+th{background-color:#f8f9fa;}
+table.compact-table{font-size:0.95em;}
+table.compact-table td,
+table.compact-table th{padding:10px;}
+form{display:grid;gap:15px;max-width:500px;}
+input,select{padding:10px;border:1px solid #ddd;border-radius:4px;}
+button{padding:12px 20px;background-color:#e74c3c;color:white;border:none;border-radius:4px;cursor:pointer;}
+button:hover{background-color:#c0392b;}
+</style>
+</head>
+<body>
+<header>
+<h1>星爵台球俱乐部</h1>
+<p>专业台球体验 尊贵会员服务</p>
+</header>
+
+<div class="section">
+<h2>场馆简介</h2>
+<p>800平米高端台球空间，配备20张国际赛事标准球桌，专业级照明系统，全天候空调开放。提供私教课程、赛事承办、团体预订等服务。</p>
+</div>
+
+<div class="section">
+<h2>设施与服务</h2>
+<ul>
+<li>美式/英式球桌选择</li>
+<li>VIP私密包厢（配备休息区）</li>
+<li>专业球杆租赁服务</li>
+<li>全天候饮品供应</li>
+<li>赛事直播专区</li>
+</ul>
+</div>
+
+<div class="section">
+  <h2>价格体系</h2>
+  <div class="price-subsection">
+    <h3>麻将房价格</h3>
+    <table class="compact-table">
+      <tr><th style="width:25%">房型</th><th style="width:35%">房间号</th><th style="width:40%">价格详情</th></tr>
+      <tr><td>特价房</td><td>A06/A08/A10/A12/A13</td><td><strong>88元/4小时</strong> 起，超时30元/小时</td></tr>
+      <tr><td>中房</td><td>A01/A02/A03/A05/A09/A11</td><td><strong>150元/4小时</strong> 起，超时38元/小时</td></tr>
+      <tr><td>豪包</td><td>A666/A888/A999</td><td><strong>88元/小时</strong></td></tr>
+    </table>
+    <p style="color:#666;margin-top:10px;font-size:0.9em">* 所有麻将房需20元茶水底消（非强制）</p>
+  </div>
+
+  <div class="price-subsection">
+    <h3>台球价格</h3>
+    <table class="compact-table">
+      <tr><th style="width:20%">区域</th><th style="width:25%">球台编号</th><th style="width:20%">价格</th><th style="width:35%">备注</th></tr>
+      <tr><td>AB区/CD区</td><td>10-19/111-666</td><td><strong>39元/小时</strong></td><td>AB区含摆球服务</td></tr>
+      <tr><td>普通包厢</td><td>1-9</td><td><strong>69元/小时</strong></td><td>-</td></tr>
+      <tr><td>VIP</td><td>T10</td><td><strong>59元/小时</strong></td><td>斯诺克专用</td></tr>
+      <tr><td>豪包</td><td>888</td><td><strong>128元/小时</strong></td><td>含初级助教服务</td></tr>
+    </table>
+    <div style="margin-top:12px">
+      <p style="color:#666;margin-bottom:8px;font-size:0.9em">助教服务：</p>
+      <ul style="color:#666;font-size:0.9em">
+        <li>初级：<strong>78元/小时</strong></li>
+        <li>中级：<strong>88元/小时</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+<h2>预约体验</h2>
+<form>
+<label>姓名:<input type="text" required></label>
+<label>联系电话:<input type="tel" required></label>
+<label>预约日期:<input type="date" required></label>
+<label>时段选择:
+<select required>
+<option value="">请选择时段</option>
+<option>10:00-14:00</option>
+<option>14:00-18:00</option>
+<option>18:00-22:00</option>
+</select>
+</label>
+<button type="submit">提交预约</button>
+</form>
+</div>
+
+</body>
+</html>
